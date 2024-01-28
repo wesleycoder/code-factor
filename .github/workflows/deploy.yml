@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@main
         with:
           deno-version: vx.x.x
 
@@ -32,7 +32,7 @@ jobs:
         run: "npm install && npm run build" # 📝 Update the build command(s) if necessary
 
       - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
+        uses: denoland/deployctl@main
         with:
           project: "code-factor"
           entrypoint: "server.js" # 📝 Update the entrypoint if necessary
