@@ -1,6 +1,8 @@
 import { Title } from "solid-start";
 import Counter from "~/components/Counter";
+import { Button } from "~/components/ui/button";
 import DefaultLayout from "~/layouts/default";
+import { clerk } from "~/lib/auth";
 
 export default function Home() {
   return (
@@ -15,6 +17,13 @@ export default function Home() {
         </a>{" "}
         to learn how to build SolidStart apps.
       </p>
+      <Button
+        onClick={() => {
+          clerk.openSignIn();
+        }}
+      >
+        Sign In
+      </Button>
     </DefaultLayout>
   );
 }
