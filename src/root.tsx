@@ -1,5 +1,10 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import {
+  ColorModeProvider,
+  ColorModeScript,
+  cookieStorageManagerSSR,
+} from "@kobalte/core";
+import { Suspense, useContext } from "solid-js";
 import {
   Body,
   ErrorBoundary,
@@ -9,11 +14,18 @@ import {
   Meta,
   Routes,
   Scripts,
+  ServerContext,
   Title,
 } from "solid-start";
 import "./root.css";
+import { isServer } from "solid-js/web";
 
 export default function Root() {
+  const event = useContext(ServerContext);
+
+  const storageManager = cookieStorageManagerSSR(
+    isServer ? event?.request.headers.get("cookie") ?? "" : document.cookie
+  );
   return (
     <Html lang="en">
       <Head>
@@ -22,13 +34,16 @@ export default function Root() {
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body>
-        <Suspense>
-          <ErrorBoundary>
-            <Routes>
-              <FileRoutes />
-            </Routes>
-          </ErrorBoundary>
-        </Suspense>
+        <ErrorBoundary>
+          <ColorModeScript storageType={storageManager.type} />
+          <Suspense>
+            <ColorModeProvider storageManager={storageManager}>
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </ColorModeProvider>
+          </Suspense>
+        </ErrorBoundary>
         <Scripts />
       </Body>
     </Html>
