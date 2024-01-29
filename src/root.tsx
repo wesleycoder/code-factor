@@ -35,7 +35,6 @@ export default function Root() {
       </Head>
       <Body>
         <ErrorBoundary>
-          <ColorModeScript storageType={storageManager.type} />
           <Suspense>
             <ColorModeProvider storageManager={storageManager}>
               <Routes>
@@ -43,6 +42,7 @@ export default function Root() {
               </Routes>
             </ColorModeProvider>
           </Suspense>
+          <ColorModeScript storageType={storageManager.type} />
         </ErrorBoundary>
         <Scripts />
       </Body>
