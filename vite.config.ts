@@ -3,7 +3,9 @@ import { defineConfig } from "vite";
 import deno from "solid-start-deno";
 
 export default defineConfig({
-  plugins: [solid({
-    adapter: deno(),
-  })],
+  plugins: [
+    solid({
+      adapter: deno(),
+    }),
+  ],
 });
