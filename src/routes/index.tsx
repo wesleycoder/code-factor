@@ -1,26 +1,25 @@
 import { Title } from "solid-start";
 import { clientOnly } from "solid-start/islands";
 import Counter from "~/components/Counter";
+import { Button } from "~/components/ui/button";
 import DefaultLayout from "~/layouts/default";
 
-const ClientSignInButton = clientOnly(
-  () => import("../components/auth/SignInButton")
-);
+const SignInButton = clientOnly(() => import("../components/auth/SignIn"));
 
 export default function Home() {
   return (
     <DefaultLayout>
-      <Title>Hello World</Title>
-      <h1>Hello world!</h1>
+      <Title>Home</Title>
+      <h1>Home</h1>
       <Counter />
       <p>
         Visit{" "}
         <a href="https://start.solidjs.com" target="_blank">
           start.solidjs.com
         </a>{" "}
-        to learn how to build SolidStart apps.
+        to learn how to build <code>SolidStart</code> apps.
       </p>
-      <ClientSignInButton />
+      <SignInButton fallback={<Button disabled>Sign In</Button>} />
     </DefaultLayout>
   );
 }

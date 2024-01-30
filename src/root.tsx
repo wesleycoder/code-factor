@@ -27,11 +27,25 @@ export default function Root() {
     isServer ? event?.request.headers.get("cookie") ?? "" : document.cookie
   );
   return (
-    <Html lang="en">
+    <Html lang="en" class="font-sans text-primary">
       <Head>
         <Title>Code factor | A game about coding and automation</Title>
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Body>
         <ErrorBoundary>

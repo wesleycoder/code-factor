@@ -71,6 +71,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter", ...fontFamily.sans],
+        mono: ["Fira Code", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
